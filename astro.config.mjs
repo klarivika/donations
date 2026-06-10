@@ -6,6 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site:"https://klarivika.github.io/donations",
@@ -13,7 +15,7 @@ export default defineConfig({
     svelte({extensions:['.svelte']}), 
     sitemap(),
   ],
-   adapter: netlify(),
+   adapter: cloudflare(),
   vite:{
     css:{
       transformer:'postcss'
@@ -21,9 +23,9 @@ export default defineConfig({
     plugins: [
       tailwindcss(),
       paraglideVitePlugin({
-				project: "./project.inlang",
-				outdir: "./src/paraglide",
-			}),
+                project: "./project.inlang",
+                outdir: "./src/paraglide",
+            }),
     ]
   },
   
